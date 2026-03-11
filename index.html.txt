@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>WiFi Heat Map Planner</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:linear-gradient(135deg,#0a0f1e,#0d1b2e,#071422);font-family:'Courier New',monospace;color:#c8d8f0;padding:16px}
+@keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-size:22px;font-weight:900;letter-spacing:2px;background:linear-gradient(90deg,#00cfff,#00ff88,#00cfff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:shimmer 3s linear infinite;margin:0}
+.header{text-align:center;margin-bottom:16px}
+.sub{font-size:9px;letter-spacing:5px;color:#4488bb;margin-bottom:4px}
+.desc{font-size:10px;color:#4488bb;letter-spacing:2px;margin-top:4px}
+.tabs{display:flex;justify-content:center;margin-bottom:16px}
+.tab{background:transparent;border:1px solid rgba(0,180,255,0.2);color:#4488bb;padding:8px 22px;cursor:pointer;font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;transition:all .2s}
+.tab.active{background:rgba(0,180,255,0.15);border-color:#00cfff;color:#00cfff}
+.tab:first-child{border-radius:6px 0 0 6px}
+.tab:last-child{border-radius:0 6px 6px 0;border-left:none}
+.layout{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.sidebar{width:195px;background:rgba(0,20,50,0.6);border:1px solid rgba(0,180,255,0.15);border-radius:10px;padding:14px;flex-shrink:0}
+.slabel{font-size:9px;letter-spacing:3px;color:#4488bb;margin-bottom:8px}
+.flabel{font-size:9px;color:#4488bb;margin-bottom:3px;margin-top:6px}
+.upload-box{margin-bottom:10px;padding:10px;background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.2);border-radius:8px}
+.upload-label{font-size:9px;color:#00ff88;letter-spacing:2px;margin-bottom:6px}
+button{display:block;width:100%;margin-bottom:5px;padding:7px 12px;border-radius:6px;cursor:pointer;font-family:'Courier New',monospace;font-size:11px;letter-spacing:1px;transition:all .2s;text-align:left;background:rgba(0,180,255,0.08);border:1px solid rgba(0,180,255,0.25);color:#88ccff}
+button:hover{background:rgba(0,180,255,0.18);border-color:#00cfff;color:#fff}
+button.active{background:rgba(0,255,136,0.15);border-color:#00ff88;color:#00ff88}
+button.green{background:rgba(0,255,136,0.1);border-color:rgba(0,255,136,0.4);color:#00ff88}
+button.red{border-color:rgba(255,80,80,0.4);color:#ff8888}
+button.red:hover{background:rgba(255,80,80,0.15)}
+button:disabled{opacity:.5;cursor:not-allowed}
+select{display:block;width:100%;margin-bottom:8px;padding:6px 8px;border-radius:6px;outline:none;cursor:pointer;background:rgba(0,20,40,0.8);border:1px solid rgba(0,180,255,0.25);color:#88ccff;font-family:'Courier New',monospace;font-size:11px}
+input[type=range]{width:100%;accent-color:#00cfff;margin-bottom:10px}
